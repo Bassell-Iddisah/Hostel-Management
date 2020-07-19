@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        {% if title %}
+        <title>Hostel Management-{{ title }}</title>
+        {% else %}
+        <title>Hostel Management.com</title>
+        {% endif %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/framework.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/fontawesome-free/css/fontawesome-all.min.css') }}">
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <a class="navbar-brand" href="{{ url_for('home') }}">{{ title }}</a>
+
+
+            {% block search %}
+            {% endblock %}
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Core</div>
+
+                            <a class="nav-link" href="{{ url_for('home') }}"
+                                ><div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
+                                Home</a>
+
+                            <a class="nav-link" href="{{ url_for('about') }}"
+                                ><div class="sb-nav-link-icon"><i class="fas fa-info"></i></div>
+                                About us</a>
+
+                            <a class="nav-link" href="{{ url_for('contact') }}"
+                                ><div class="sb-nav-link-icon"><i class="fas fa-phone"></i></div>
+                                Contact us</a>
+
+                            <div class="sb-sidenav-menu-heading">Categories</div>
+                            <a class="nav-link collapsed" href="{{ url_for('luxury') }}" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
+                                ><div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Luxury
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
+                            ></a>
+
+                            <a class="nav-link collapsed" href="{{ url_for('comfort') }}" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"
+                                ><div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Comfort
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
+                            ></a>
+
+                            <a class="nav-link collapsed" href="{{ url_for('affordable') }}" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"
+                                ><div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Affordable
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
+                            ></a>
+
+                            <div class="sb-sidenav-menu-heading">Extra</div>
+                            <a class="nav-link collapsed" href="{{ url_for('hostel_crud') }}" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"
+                                ><div class="sb-nav-link-icon"><i class="fa fa-plus"></i></div>
+<!--                                Add a plus sign here--> Add A Hostel
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
+                            ></a>
+
+
+
+                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth"
+                                        >Authentication
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
+                                    ></a>
+                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="login.html">Login</a><a class="nav-link" href="register.html">Register</a><a class="nav-link" href="password.html">Forgot Password</a></nav>
+                                    </div>
+                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError"
+                                        >Error
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
+                                    ></a>
+                                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="401.html">401 Page</a><a class="nav-link" href="404.html">404 Page</a><a class="nav-link" href="500.html">500 Page</a></nav>
+                                    </div>
+                                </nav>
+                            </div>
+<!--                            <div class="sb-sidenav-menu-heading">Addons</div>-->
+<!--                            <a class="nav-link" href="charts.html"-->
+<!--                                ><div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>-->
+<!--                                Charts</a-->
+<!--                            ><a class="nav-link" href="tables.html"-->
+<!--                                ><div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>-->
+<!--                                Tables</a-->
+<!--                            >-->
+<!--                        </div>-->
+                    </div>
+                    </div>
+                </nav>
+            </div>
+
+            <div id="layoutSidenav_content">
+
+
+
+                <main>
+                    <div class="container">
+
+                        {% with messages = get_flashed_messages(with_categories=True) %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }} text-center">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endwith %}
+
+                        {% block content %}
+                        {% endblock content %}
+                    </div>
+
+                </main>
+
+
+
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Your Website 2019</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>

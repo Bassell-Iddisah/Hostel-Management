@@ -1,0 +1,50 @@
+{% extends "hostel_layout.html" %}
+<style>
+
+</style>
+{% block content %}
+    <section class="card-body border-top-0 bg-light">
+        <legend class="text-center font-weight-bold mb-4 mt-4 border-bottom">Some Basic Info</legend>
+
+
+        <ul class="row">
+            <div class="col-md-4 border-right">
+                <p class="font-weight-bold">Pricing: </p>{{ current_hostel.price_range }}
+            </div>
+            <div class="col-md-4 border-right">
+                <p class="font-weight-bold">Location: </p>{{ current_hostel.location }}
+            </div>
+            <div class="col-md-4 ">
+                <p class="font-weight-bold">Hostel Rating: </p>{{ current_hostel.rating}}
+            </div>
+        </ul>
+
+        <legend class="text-center mt-5 mb-4 border-bottom font-weight-bold">Further Details</legend>
+        <div class="row">
+            {% for att in attribs %}
+                {% if att.Intensity == 'high' %}
+                    <div class="col-md-4 card" style="border-bottom:2px orangered dashed;">
+                        <p><span class="font-weight-bold">{{ att.condition }}:</span> {{ att.Intensity }}</p>
+                        <p><span class="font-weight-bold">Description: {{ att.description }}</span></p>
+                    </div>
+                {% elif int_int in range(3, 10) %}
+                    <div class="col-md-4 card" style="border-bottom:2px black dashed;">
+                        <p><span class="font-weight-bold">{{ att.condition }}:</span> {{ att.Intensity }}</p>
+                        <p><span class="font-weight-bold">Description: {{ att.description }}</span></p>
+                    </div>
+                {% elif att.Intensity == 'medium' %}
+                    <div class="col-md-4 card" style="border-bottom:2px yellow dashed;">
+                        <p><span class="font-weight-bold">{{ att.condition }}:</span> {{ att.Intensity }}</p>
+                        <p><span class="font-weight-bold">Description: {{ att.description }}</span></p>
+                    </div>
+                {% else%}
+                    <div class="col-md-4 card" style="border-bottom:2px greenyellow dashed;">
+                        <p><span class="font-weight-bold">{{ att.condition }}:</span> {{ att.Intensity }}</p>
+                        <p><span class="font-weight-bold">Description: {{ att.description }}</span></p>
+                    </div>
+                {% endif %}
+                <br>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

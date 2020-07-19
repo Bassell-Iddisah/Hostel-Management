@@ -1,0 +1,163 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <form action="" method="post" enctype="multipart/form-data">
+        {{ upform.hidden_tag() }}
+        <fieldset class="jumbotron mr-auto ml-auto w-50 mt-lg-5 overflow-hidden">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    {{ upform.hostel_name(class='form-control ', placeholder='New Name') }}
+                    {% if upform.hostel_name.errors %}
+                        {{ upform.hostel_name(class='form-control is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in upform.hostel_name.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ upform.phone_number(class='form-control ', placeholder="Caretacker's New Phone") }}
+                    {% if upform.phone_number.errors %}
+                        {{ upform.phone_number(class='form-control is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in upform.phone_number.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ upform.notes(class='form-control ', placeholder=' New Notes') }}
+                    {% if upform.notes.errors %}
+                        {{ upform.notes(class='form-control is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in upform.notes.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ upform.price_range(class='form-control ', placeholder='What range is the New price?') }}
+                    {% if upform.price_range.errors %}
+                        {{ upform.price_range(class='form-control is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in upform.price_range.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ upform.condition(class='form-control ', placeholder='Enter a condition') }}
+                    {% if upform.condition.errors %}
+                        {{ upform.condition(class='form-control is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in upform.condition.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+{#Use select field to choose the condition and intensity#}
+            <div class="col-md-6">
+                <div class="form-group">
+                    {{ upform.location(class='form-control ', placeholder='Where is the New location?') }}
+                    {% if upform.location.errors %}
+                        {{ upform.location(class='form-control is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in upform.location.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ upform.distance(class='form-control ', placeholder=' New Distance from the campus') }}
+                    {% if upform.distance.errors %}
+                        {{ upform.distance(class='form-control is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in upform.distance.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ upform.cat(class='form-control ', placeholder='Hostel New Category') }}
+                    {% if upform.cat.errors %}
+                        {{ upform.cat(class='form-control is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in upform.cat.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ upform.Intensity(class='form-control ', placeholder='How intence is the condition?') }}
+                    {% if upform.Intensity.errors %}
+                        {{ upform.Intensity(class='form-control is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in upform.Intensity.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ upform.hostel_picture()}}
+                    {% if upform.hostel_picture.errors %}
+                        {{ upform.hostel_picture(class='form-control is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in upform.hostel_picture.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+
+            <br>
+            <div class="form-group">
+                {{ upform.submit(class='btn btn-outline-success float-left') }}
+            </div>
+            <div class="form-group">
+{#                <a href="{{ url_for('') }}" class="btn"></a>#}
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

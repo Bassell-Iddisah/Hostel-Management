@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        {% if title %}
+        <title>Hostel Management-{{ title }}</title>
+        {% else %}
+        <title>Hostel Management.com</title>
+        {% endif %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/framework.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/fontawesome-free/css/fontawesome-all.min.css') }}">
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+{#        Here should be breadcrums#}
+            <a class="text-light" href="{{ url_for('home') }}">{{ title }}</a>
+            {% block search %}
+
+            {% endblock %}
+        </nav>
+        <div id="layoutSidenav">
+
+            <div id="layoutSidenav_nav">
+
+                <nav class="sb-sidenav accordion sb-sidenav-dark" >
+
+                    <div class="sb-sidenav-menu">
+
+                        <div class="nav">
+
+                            <div class="sb-sidenav-menu-heading">Core</div>
+
+                            <a class="nav-link" href="{{ url_for('home') }}">
+                                <div class="sb-nav-link-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                Home
+                            </a>
+
+                            <a class="nav-link" href="{{ url_for('about') }}">
+                                <div class="sb-nav-link-icon">
+                                    <i class="fas fa-info"></i>
+                                </div>
+                                About us
+                            </a>
+
+                            <a class="nav-link" href="{{ url_for('contact') }}">
+                                <div class="sb-nav-link-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                Contact us
+                            </a>
+
+                            <div class="sb-sidenav-menu-heading">Hostel Categories</div>
+
+                            <a class="nav-link" href="{{ url_for('luxury') }}">
+                                <div class="sb-nav-link-icon">
+                                    <i class="fas fa-columns"></i>
+                                </div>
+                                Luxury
+                            </a>
+
+                            <a class="nav-link collapsed" href="{{ url_for('comfort') }}">
+                                <div class="sb-nav-link-icon">
+                                    <i class="fas fa-columns"></i>
+                                </div>
+                                Comfort
+                            </a>
+
+                            <a class="nav-link collapsed" href="{{ url_for('affordable') }}">
+                                <div class="sb-nav-link-icon">
+                                    <i class="fas fa-columns"></i>
+                                </div>
+                                Affordable
+                            </a>
+
+                            <div class="sb-sidenav-menu-heading">Extra</div>
+
+                            <a class="nav-link collapsed" href="{{ url_for('hostel_crud') }}">
+                                <div class="sb-nav-link-icon">
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                Add A Hostel
+                            </a>
+
+                    </div>
+                    </div>
+                </nav>
+            </div>
+
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container">
+
+                        {% with messages = get_flashed_messages(with_categories=True) %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }} text-center">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endwith %}
+
+                        <div class="container card-body">
+                            <img src="{{ url_for('static',filename='/images/'+current_hostel.cat+'/'+current_hostel.image) }}"\
+                                 alt="{{ current_hostel.name }} Banner" class="card-img" style="height: 500px;">
+
+                            <ul class="nav mr-auto ml-auto border-bottom mb-lg-4 mt-lg-5">
+                                <li class="nav-item"><a href="{{ url_for('info_posts', hostel_name=current_hostel.name) }}" class="nav-link">Info Posts</a></li>
+                                <li class="nav-item"><a href="{{ url_for('gallery', hostel_name=current_hostel.name) }}" class="nav-link">Gallery</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link">Whata new?</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link">Link 5</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link">Link 6</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link">Link 7</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link">Link 8</a></li>
+                                <li class="nav-item"><a href="{{ url_for('delete_hostel', hostel=current_hostel.name) }}" class="nav-link">Delete Hostel</a></li>
+                                <li class="nav-item"><a href="{{ url_for('update_hostel', hostel=current_hostel.name) }}" class="nav-link">Update Hostel Info</a></li>
+                            </ul>
+                        {% block content %}
+
+                        {% endblock %}
+                        </div>
+                    </div>
+                </main>
+
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Your Website 2019</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>

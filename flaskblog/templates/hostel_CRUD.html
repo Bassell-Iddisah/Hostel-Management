@@ -1,0 +1,134 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <form action="" method="post" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+
+        <fieldset class="jumbotron mr-auto ml-auto w-50 mt-lg-5">
+
+            <div class="form-group">
+
+                {% if form.hostel_name.errors %}
+                    {{ form.hostel_name(class='form-control is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in form.hostel_name.errors %}
+                            <span>
+                                {{ error }}
+                            </span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.hostel_name(class='form-control ', placeholder='Hostel Name') }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {% if form.phone_number.errors %}
+                    {{ form.phone_number(class='form-control is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in form.phone_number.errors %}
+                            <span>
+                                {{ error }}
+                            </span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.phone_number(class='form-control ', placeholder="Caretacker's Phone") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {% if form.notes.errors %}
+                    {{ form.notes(class='form-control is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in form.notes.errors %}
+                            <span>
+                                {{ error }}
+                            </span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.notes(class='form-control ', placeholder='Notes') }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {% if form.price_range.errors %}
+                    {{ form.price_range(class='form-control is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in form.price_range.errors %}
+                            <span>
+                                {{ error }}
+                            </span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.price_range(class='form-control ', placeholder='What range is the price?') }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {% if form.location.errors %}
+                    {{ form.location(class='form-control is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in form.location.errors %}
+                            <span>
+                                {{ error }}
+                            </span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.location(class='form-control ', placeholder='Where is it located') }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {% if form.distance.errors %}
+                    {{ form.distance(class='form-control is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in form.distance.errors %}
+                            <span>
+                                {{ error }}
+                            </span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.distance(class='form-control ', placeholder='Distance from the campus') }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {% if form.cat.errors %}
+                    {{ form.cat(class='form-control is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in form.cat.errors %}
+                            <span>
+                                {{ error }}
+                            </span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.cat(class='form-control ', placeholder='Hostel Category') }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {% if form.hostel_picture.errors %}
+                    {{ form.hostel_picture(class='is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in form.hostel_picture.errors %}
+                            <span>
+                                {{ error }}
+                            </span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.hostel_picture() }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.submit(class='btn btn-outline-success') }}
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

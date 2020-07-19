@@ -1,0 +1,18 @@
+{% extends "hostel_layout.html" %}
+{% block content %}
+    <section class="card-body border-top-0 bg-light">
+        <div class="row">
+            {% for i in range(28) %}
+                <div class="col-md-3">
+                    <a href="#">
+                        <div class="card">
+                            <img src="{{ person_image }}" alt="image File" class="card-img">
+                            <p class="card-text">Hostel compound</p>
+                        </div>
+                    </a>
+                    <br>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

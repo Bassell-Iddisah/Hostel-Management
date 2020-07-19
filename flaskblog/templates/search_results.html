@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="container row">
+        {% for res in results %}
+            <div class="col-md-4">
+                  <div class="card" style="">
+                      <img class="card-img-top" src="{{ image }}">
+                      <div class="card-body row">
+                          <div class="col-md-6">
+                              <legend class="card-title">{{ post.name }}</legend>
+                              <p class="card-text">{{ about }}</p>
+                              <a href="#" class="btn btn-primary">Go There</a>
+                          </div>
+
+                          <div class="col-md-6">
+                              <legend class="card-title">Location:</legend><br>
+                              <p class="card-text">Lorem ipsum dolor sit amet, consec</p>
+                          </div>
+                      </div>
+                      <div class="small text-muted">
+                          Phone Number: {{ post.phone }}
+                      </div>
+                  </div>
+            </div>
+        {% endfor %}
+
+    </div>
+{% endblock %}
