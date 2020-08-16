@@ -1,18 +1,106 @@
 {% extends "layout.html" %}
-{% block search %}
-     <!---------------------------------  Navbar Search  --------------------------------->
-            <form action='{{ url_for('search_results') }}' class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" method="post">
-                {{ form.hidden_tag() }}
-                <div class="input-group">
-                    {{ form.search_input(class='form-control', placeholder='Search Hostels...') }}
-                    <div class="input-group-append">
-                        {{ form.submit(class='btn btn-outline-primary') }}
-                    </div>
-                </div>
-            </form>
-{% endblock %}
-{% block content %}
-<div class="container" style="width:100%;">
+<style>
+    #layoutSidenav{
+        min-width:50px;
+        max-width:225px;
+    }
 
+    #layoutSidenav:hover{
+        transition-delay:0.5s;
+        width:225px;
+    }
+</style>
+{% block content %}
+    {% if results %}
+        <div class="container row">
+{#        {% for res in results %}#}
+            <div class="col-md-4">
+                  <div class="card">
+                      <img class="card-img-top" src="{{ url_for('static', filename='/images/{}/{}'.format(results.cat, results.image)) }}">
+                      <h1 class="card-title text-center">{{ results.name }}</h1>
+                      <div class="card-body row">
+                          <div class="col-md-6">
+                              <legend class="card-title">{{ results.name }}</legend>
+                              <p class="card-text">{{ about }}</p>
+                              <a href="{{ url_for('hostel_page', hostel_name = results.name) }}" class="btn btn-primary">Go There</a>
+                          </div>
+
+                          <div class="col-md-6">
+                              <legend class="card-title">Location:</legend><br>
+                              <p class="card-text">Lorem ipsum dolor sit amet, consec</p>
+                          </div>
+                      </div>
+                      <div class="small text-muted">
+                          Phone Number: {{ results.phone }}
+                      </div>
+                  </div>
+            </div>
+{#        {% endfor %}#}
+    </div>
+    {% else %}
+        <div class="container-fluid w-100">
+    <div class="row mt-5 mr-auto ml-auto">
+        <div class="col-xl-4 col-md-6">
+            <div class="card bg-primary text-white mb-4">
+                <div class="card-body">Luxury Hostels</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="{{ url_for('luxury') }}">View Details</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-4 col-md-6">
+            <div class="card bg-warning text-white mb-4">
+                <div class="card-body">Comfortable Hostels</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="{{ url_for('comfort') }}">View Details</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-6">
+            <div class="card bg-success text-white mb-4">
+                <div class="card-body">Affordable Hostels</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="{{ url_for('affordable') }}">View Details</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="card mb-4">
+                            <div class="card-header"><i class="fas fa-table mr-1"></i>All Hostels in the system</div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Hostel Name</th>
+                                                <th>Price Range</th>
+                                                <th>Rating</th>
+                                                <th>Category</th>
+                                                <th>Caretaker's Number</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for hostel in hostels %}
+                                                <tr>
+                                                    <td>{{ hostel.name }}</td>
+                                                    <td>{{ hostel.price_range }}</td>
+                                                    <td>{{ hostel.rating }}</td>
+                                                    <td>{{ hostel.cat }}</td>
+                                                    <td>{{ hostel.phone }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
 </div>
+    {% endif %}
 {% endblock content %}

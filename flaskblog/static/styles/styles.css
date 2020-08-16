@@ -10054,7 +10054,8 @@ body {
   z-index: 1039;
 }
 .sb-nav-fixed #layoutSidenav #layoutSidenav_nav {
-  width: 225px;
+  min-width:50px;
+  max-width: 225px;
   height: 100vh;
   z-index: 1038;
 }

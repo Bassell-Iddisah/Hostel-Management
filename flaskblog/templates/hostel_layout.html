@@ -19,76 +19,85 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 {#        Here should be breadcrums#}
-            <a class="text-light" href="{{ url_for('home') }}">{{ title }}</a>
+            <a class="navbar-brand text-light" href="{{ url_for('home') }}"><i class="fa fa-angle-double-left"></i>Go Home</a>
             {% block search %}
 
             {% endblock %}
         </nav>
         <div id="layoutSidenav">
-
             <div id="layoutSidenav_nav">
-
-                <nav class="sb-sidenav accordion sb-sidenav-dark" >
-
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
-
                         <div class="nav">
-
                             <div class="sb-sidenav-menu-heading">Core</div>
 
-                            <a class="nav-link" href="{{ url_for('home') }}">
-                                <div class="sb-nav-link-icon">
-                                    <i class="fas fa-home"></i>
-                                </div>
-                                Home
-                            </a>
+                            <a class="nav-link" href="{{ url_for('home') }}"
+                                ><div class="sb-nav-link-icon"><i class="fas fa-home mr-2"></i></div>
+                                Home</a>
 
-                            <a class="nav-link" href="{{ url_for('about') }}">
-                                <div class="sb-nav-link-icon">
-                                    <i class="fas fa-info"></i>
-                                </div>
-                                About us
-                            </a>
+                            <a class="nav-link" href="{{ url_for('about') }}"
+                                ><div class="sb-nav-link-icon"><i class="fas fa-info mr-3"></i></div>
+                                About us</a>
 
-                            <a class="nav-link" href="{{ url_for('contact') }}">
-                                <div class="sb-nav-link-icon">
-                                    <i class="fas fa-phone"></i>
-                                </div>
-                                Contact us
-                            </a>
+                            <a class="nav-link" href="{{ url_for('contact') }}"
+                                ><div class="sb-nav-link-icon"><i class="fas fa-phone mr-2"></i></div>
+                                Contact us</a>
 
-                            <div class="sb-sidenav-menu-heading">Hostel Categories</div>
-
-                            <a class="nav-link" href="{{ url_for('luxury') }}">
-                                <div class="sb-nav-link-icon">
-                                    <i class="fas fa-columns"></i>
-                                </div>
+                            <div class="sb-sidenav-menu-heading">Categories</div>
+                            <a class="nav-link collapsed" href="{{ url_for('luxury') }}" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
+                                ><div class="sb-nav-link-icon"><i class="fas fa-columns mr-2"></i></div>
                                 Luxury
-                            </a>
+                                <div class="sb-sidenav-collapse-arrow"></div
+                            ></a>
 
-                            <a class="nav-link collapsed" href="{{ url_for('comfort') }}">
-                                <div class="sb-nav-link-icon">
-                                    <i class="fas fa-columns"></i>
-                                </div>
+                            <a class="nav-link collapsed" href="{{ url_for('comfort') }}" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"
+                                ><div class="sb-nav-link-icon"><i class="fas fa-columns mr-2"></i></div>
                                 Comfort
-                            </a>
+                                <div class="sb-sidenav-collapse-arrow"></div
+                            ></a>
 
-                            <a class="nav-link collapsed" href="{{ url_for('affordable') }}">
-                                <div class="sb-nav-link-icon">
-                                    <i class="fas fa-columns"></i>
-                                </div>
+                            <a class="nav-link collapsed" href="{{ url_for('affordable') }}" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"
+                                ><div class="sb-nav-link-icon"><i class="fas fa-columns mr-2"></i></div>
                                 Affordable
-                            </a>
+                                <div class="sb-sidenav-collapse-arrow"></div
+                            ></a>
 
                             <div class="sb-sidenav-menu-heading">Extra</div>
+                            <a class="nav-link collapsed" href="{{ url_for('hostel_crud') }}" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"
+                                ><div class="sb-nav-link-icon"><i class="fa fa-plus mr-2"></i></div>
+<!--                                Add a plus sign here--> Add A Hostel
+                                <div class="sb-sidenav-collapse-arrow"></div
+                            ></a>
 
-                            <a class="nav-link collapsed" href="{{ url_for('hostel_crud') }}">
-                                <div class="sb-nav-link-icon">
-                                    <i class="fa fa-plus"></i>
-                                </div>
-                                Add A Hostel
-                            </a>
 
+
+                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth"
+                                        >Authentication
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
+                                    ></a>
+                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="login.html">Login</a><a class="nav-link" href="register.html">Register</a><a class="nav-link" href="password.html">Forgot Password</a></nav>
+                                    </div>
+                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError"
+                                        >Error
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
+                                    ></a>
+                                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="401.html">401 Page</a><a class="nav-link" href="404.html">404 Page</a><a class="nav-link" href="500.html">500 Page</a></nav>
+                                    </div>
+                                </nav>
+                            </div>
+<!--                            <div class="sb-sidenav-menu-heading">Addons</div>-->
+<!--                            <a class="nav-link" href="charts.html"-->
+<!--                                ><div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>-->
+<!--                                Charts</a-->
+<!--                            ><a class="nav-link" href="tables.html"-->
+<!--                                ><div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>-->
+<!--                                Tables</a-->
+<!--                            >-->
+<!--                        </div>-->
                     </div>
                     </div>
                 </nav>
@@ -96,31 +105,28 @@
 
             <div id="layoutSidenav_content">
                 <main>
-                    <div class="container">
+                    {% with messages = get_flashed_messages(with_categories=True) %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }} text-center">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endwith %}
 
-                        {% with messages = get_flashed_messages(with_categories=True) %}
-                            {% for category, message in messages %}
-                                <div class="alert alert-{{ category }} text-center">
-                                    {{ message }}
-                                </div>
-                            {% endfor %}
-                        {% endwith %}
-
-                        <div class="container card-body">
-                            <img src="{{ url_for('static',filename='/images/'+current_hostel.cat+'/'+current_hostel.image) }}"\
+                    <img src="{{ url_for('static',filename='/images/'+current_hostel.cat+'/'+current_hostel.image) }}"\
                                  alt="{{ current_hostel.name }} Banner" class="card-img" style="height: 500px;">
 
-                            <ul class="nav mr-auto ml-auto border-bottom mb-lg-4 mt-lg-5">
+                    <div class="container">
+                        <div class="card-body">
+                        <nav id="mainav" class="w-75 mr-auto ml-auto border-bottom border-secondary">
+                            <ul class="nav mt-lg-5">
                                 <li class="nav-item"><a href="{{ url_for('info_posts', hostel_name=current_hostel.name) }}" class="nav-link">Info Posts</a></li>
                                 <li class="nav-item"><a href="{{ url_for('gallery', hostel_name=current_hostel.name) }}" class="nav-link">Gallery</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">Whata new?</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">Link 5</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">Link 6</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">Link 7</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">Link 8</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link">What's new?</a></li>
                                 <li class="nav-item"><a href="{{ url_for('delete_hostel', hostel=current_hostel.name) }}" class="nav-link">Delete Hostel</a></li>
                                 <li class="nav-item"><a href="{{ url_for('update_hostel', hostel=current_hostel.name) }}" class="nav-link">Update Hostel Info</a></li>
                             </ul>
+                        </nav>
                         {% block content %}
 
                         {% endblock %}
@@ -128,18 +134,7 @@
                     </div>
                 </main>
 
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2019</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+
             </div>
         </div>
     </body>

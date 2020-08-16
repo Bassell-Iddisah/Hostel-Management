@@ -1,13 +1,15 @@
 {% extends "layout.html" %}
 {% block content %}
     <div class="container row">
+
         {% for res in results %}
+            {{ res.name }}
             <div class="col-md-4">
-                  <div class="card" style="">
-                      <img class="card-img-top" src="{{ image }}">
+                  <div class="card mt-4">
+                      <img class="card-img-top" src="{{ res.image }}">
                       <div class="card-body row">
                           <div class="col-md-6">
-                              <legend class="card-title">{{ post.name }}</legend>
+                              <legend class="card-title">{{ res.name }}</legend>
                               <p class="card-text">{{ about }}</p>
                               <a href="#" class="btn btn-primary">Go There</a>
                           </div>
@@ -18,11 +20,10 @@
                           </div>
                       </div>
                       <div class="small text-muted">
-                          Phone Number: {{ post.phone }}
+                          Phone Number: {{ res.phone }}
                       </div>
                   </div>
             </div>
         {% endfor %}
-
     </div>
 {% endblock %}

@@ -1,0 +1,61 @@
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/styles/bootstrap.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/styles/styles.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/styles/layout.css') }}">
+<div class="col-md-4 mr-auto ml-auto">
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }} text-center">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endwith %}
+</div>
+{% block content %}
+<form action="" method="post" enctype="multipart/form-data" class="mt-5">
+    {{ form.hidden_tag() }}
+    <fieldset class="jumbotron mr-auto ml-auto w-25" style="border-top:5px dodgerblue solid;">
+
+<!--        <legend class="text-center border-bottom border-dark">{{ legend }}</legend>-->
+
+        <div class="form-group">
+                {% if form.email.errors %}
+                    {{ form.email(class='form-control-md is-invalid', placeholder="Email Address") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                            <span>
+                                {{ error }}
+                            </span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email(class='form-control-md', placeholder="Email Address") }}
+                {% endif %}
+            </div>
+
+
+
+        <div class="form-group">
+                {% if form.password.errors %}
+                    {{ form.password(class='form-control-md is-invalid', placeholder="Password:") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.password.errors %}
+                            <span>
+                                {{ error }}
+                            </span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.password(class='form-control-md', placeholder="Password:") }}
+                {% endif %}
+            </div>
+
+
+        <div class="form-group">
+            {{ form.submit(class='btn btn-secondary') }}
+        </div>
+        <small>
+            Don't have an account? <a href="{{ url_for('register') }}">Sign up here</a>
+        </small>
+    </fieldset>
+</form>
+{% endblock %}

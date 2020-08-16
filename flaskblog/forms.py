@@ -1,21 +1,32 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileAllowed
-from wtforms import StringField, SubmitField, IntegerField, FileField
-from wtforms.validators import DataRequired, Length
+from flaskblog.models import User, Hostel
+from wtforms import StringField, SubmitField, IntegerField, FileField, PasswordField
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 
 
-class User_Details(FlaskForm):
-    Full_Name = StringField("Full Name", validators=[DataRequired(), Length(min=2, max=30)])
-    Email = StringField("E-mail", validators=[DataRequired()])
-    Phone_Number = IntegerField("Phone Number", validators=[Length(min=10, max=10)])
-    Article = StringField("Article")
-    Submit = SubmitField("Submit")
+class RegisterForm(FlaskForm):
+    fullname = StringField("Full Name", validators=[DataRequired()])
+    email = StringField("E-mail", validators=[DataRequired(), Email()])
+    password = PasswordField('Choose Password', validators=[DataRequired()])
+    confirmpassword = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField("Submit")
+
+    def validate_username(self, email):
+        user = User.query.filter_by(email=email.data).first()
+        if user:
+            raise ValidationError('This email alreade exists, please choose a new one')
+
+
+class LoginForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Log in')
 
     
 class Hostel_Crud(FlaskForm):
     hostel_name = StringField("Hostel Name", validators=[Length(min=2, max=20)])
-    phone_number = IntegerField("Phone Number")
-    notes = StringField("Notes", validators=[Length(min=20, max=100)])
+    phone_number = StringField("Phone Number")
     price_range = StringField('Price Range')
     location = StringField('State location')
     distance = StringField('Distance from campus')
@@ -23,11 +34,15 @@ class Hostel_Crud(FlaskForm):
     hostel_picture = FileField('Hostel Picture', validators=[FileAllowed(['jpg', 'pgn'])])
     submit = SubmitField("Submit")
 
+    def validate_hostel(self, hostel_name):
+        hostel = Hostel.query.filter_by(hostel_name=hostel_name.data).first()
+        if hostel:
+            raise ValidationError('This hostel is already in the system.')
+
 
 class Hostel_Update(FlaskForm):
     hostel_name = StringField("Hostel Name", validators=[Length(min=2, max=20)])
     phone_number = IntegerField("Phone Number")
-    notes = StringField("Notes", validators=[Length(min=20, max=100)])
     price_range = StringField('Price Range')
     location = StringField('State location')
     distance = StringField('Distance from campus')
@@ -35,10 +50,18 @@ class Hostel_Update(FlaskForm):
     hostel_picture = FileField('Hostel Picture', validators=[FileAllowed(['jpg', 'pgn'])])
     condition = StringField('Condition')
     Intensity = StringField('Intensity')
-    advanced = SubmitField("Details")
     submit = SubmitField("Submit")
+
+    def validate_hostel(self, hostel_name):
+        hostel = Hostel.query.filter_by(hostel_name=hostel_name.data).first()
+        if hostel:
+            raise ValidationError('This hostel is already in the system.')
 
 
 class SearchForm(FlaskForm):
     search_input = StringField('Search ...', validators=[DataRequired()])
     submit = SubmitField('Search')
+
+
+class images(FlaskForm):
+    Numberoffields = StringField("", validators=[DataRequired()])

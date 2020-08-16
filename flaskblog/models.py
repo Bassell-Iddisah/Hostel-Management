@@ -14,10 +14,10 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String, nullable=False)
     image_file = db.Column(db.String, default='default.jpg', nullable=False)
     is_admin = db.Column(db.Integer, default=0, nullable=False)
-    # posts = db.relationship('Posts', backref='author', lazy=True)
+    #posts = db.relationship('Posts', backref='author', lazy=True)
 
     def __repr__(self):
-        return f"User( 'username:{ self.username }', 'id:{ self.id }','Phone:{ self.phone }','image:{ self.image }')"
+        return f"User( 'username:{ self.username }', 'id:{ self.id }','image:{ self.image_file }')"
 
 
 # Main hostel table will contain basic hostel info
@@ -30,7 +30,7 @@ class Hostel(db.Model):
     price_range = db.Column(db.Integer(), nullable=False)
     location = db.Column(db.String(100), nullable=False)
     distance = db.Column(db.String(50), nullable=False)
-    rating = db.Column(db.Integer(),default=None)
+    rating = db.Column(db.Integer(), default=None)
     attributes = db.relationship('Hostel_Attributes', backref='which_hostel', lazy=True)
 
     def __repr__(self):
@@ -47,3 +47,12 @@ class Hostel_Attributes(db.Model):
     def __repr__(self):
         return f"Hostel_Attributes( '{ self.id }', 'Condition:{ self.condition }','Intensity:{ self.Intensity }')"
 
+
+class Hostel_Images(db.Model):
+    id = db.Column(db.Integer, unique=True, nullable=False, primary_key=True)
+    img_name = db.Column(db.String, nullable=False)
+    img = db.Column(db.String, nullable=False)
+    belongs_to = db.Column(db.Integer, db.ForeignKey('hostel.id'), nullable=False)
+
+    def __repr__(self):
+        return f"Hostel_Images('Image:{self.image_name}', Belongs to: '{self.belongs_to}')"

@@ -1,3 +1,26 @@
 {% extends "layout.html" %}
 {% block content %}
-{% endblock content %}
+    <div class="card-header"><i class="fas fa-table mr-1"></i>Get in touch with hostel managers now</div>
+    <div class="card-body">
+        <div class="container-fluid table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Hostel</th>
+                        <th>Category</th>
+                        <th>Cartaker's Number</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for hostel in hostels %}
+                        <tr>
+                            <td>{{ hostel.name }} Hostel</td>
+                            <td>{{ hostel.cat }}</td>
+                            <td>{{ hostel.phone }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

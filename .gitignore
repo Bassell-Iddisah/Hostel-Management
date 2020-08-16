@@ -1,2 +1,5 @@
 .idea
 venv
+*.pyc
+*.db-journam
+__pycache__/**

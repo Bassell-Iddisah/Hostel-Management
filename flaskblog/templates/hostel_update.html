@@ -35,20 +35,6 @@
                 </div>
 
                 <div class="form-group">
-                    {{ upform.notes(class='form-control ', placeholder=' New Notes') }}
-                    {% if upform.notes.errors %}
-                        {{ upform.notes(class='form-control is-invalid') }}
-                        <div class="invalid-feedback">
-                            {% for error in upform.notes.errors %}
-                                <span>
-                                    {{ error }}
-                                </span>
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-                </div>
-
-                <div class="form-group">
                     {{ upform.price_range(class='form-control ', placeholder='What range is the New price?') }}
                     {% if upform.price_range.errors %}
                         {{ upform.price_range(class='form-control is-invalid') }}
@@ -63,11 +49,21 @@
                 </div>
 
                 <div class="form-group">
-                    {{ upform.condition(class='form-control ', placeholder='Enter a condition') }}
-                    {% if upform.condition.errors %}
-                        {{ upform.condition(class='form-control is-invalid') }}
+                    <select name="condition" id="" class="form-control">
+                        <option name="condition" value="">Add a current hostel condition</option>
+                        <option name="condition" value="Flood Factor">Flood Factor</option>
+                        <option name="condition" value="Noise Level">Noise Level</option>
+                        <option name="condition" value="Sanitary Condition">Sanitary Condition</option>
+                        <option name="condition" value="Tenant Behavoural Likeness">Tenant Behavoural Likeness</option>
+                    </select>
+                </div>
+
+                <div class="form-group float-left">
+                    {{ upform.hostel_picture()}}
+                    {% if upform.hostel_picture.errors %}
+                        {{ upform.hostel_picture(class='form-control is-invalid') }}
                         <div class="invalid-feedback">
-                            {% for error in upform.condition.errors %}
+                            {% for error in upform.hostel_picture.errors %}
                                 <span>
                                     {{ error }}
                                 </span>
@@ -121,31 +117,16 @@
                 </div>
 
                 <div class="form-group">
-                    {{ upform.Intensity(class='form-control ', placeholder='How intence is the condition?') }}
-                    {% if upform.Intensity.errors %}
-                        {{ upform.Intensity(class='form-control is-invalid') }}
-                        <div class="invalid-feedback">
-                            {% for error in upform.Intensity.errors %}
-                                <span>
-                                    {{ error }}
-                                </span>
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-                </div>
-
-                <div class="form-group">
-                    {{ upform.hostel_picture()}}
-                    {% if upform.hostel_picture.errors %}
-                        {{ upform.hostel_picture(class='form-control is-invalid') }}
-                        <div class="invalid-feedback">
-                            {% for error in upform.hostel_picture.errors %}
-                                <span>
-                                    {{ error }}
-                                </span>
-                            {% endfor %}
-                        </div>
-                    {% endif %}
+                    <select name="Intensity" class="form-control">
+                        <option name="Intensity" value="">Level of condition</option>
+                        <option name="Intensity" value="Low">Low</option>
+                        <option name="Intensity" value="Below Medium">Below Medium</option>
+                        <option name="Intensity" value="Medium">Medium</option>
+                        <option name="Intensity" value="Above Medium">Above Medium</option>
+                        <option name="Intensity" value="High">High</option>
+                        <option name="Intensity" value="High">High</option>
+                        <option name="Intensity" value="Very High">Very High</option>
+                    </select>
                 </div>
             </div>
         </div>
