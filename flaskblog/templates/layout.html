@@ -22,7 +22,7 @@
             <p class="ml-5 mr-n5 text-light">Currently logged in as: {{ current_user.username }}</p>
 
                 <!---------------------------------  Navbar Search  --------------------------------->
-                <form action='search_results' class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" method="post">
+                <form action='' class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" method="post">
                     {{ searchform.hidden_tag() }}
                     <div class="input-group">
                         {{ searchform.search_input(class='form-control', placeholder='Search Hostels by name...') }}

@@ -1,17 +1,16 @@
 {% extends "layout.html" %}
 {% block content %}
     <div class="container row">
-
-        {% for res in results %}
-            {{ res.name }}
+{#        {% for res in results %}#}
             <div class="col-md-4">
-                  <div class="card mt-4">
-                      <img class="card-img-top" src="{{ res.image }}">
+                  <div class="card">
+                      <img class="card-img-top" src="{{ url_for('static', filename='/images/{}/{}'.format(results.cat, results.image)) }}">
+                      <h1 class="card-title text-center">{{ results.name }}</h1>
                       <div class="card-body row">
                           <div class="col-md-6">
-                              <legend class="card-title">{{ res.name }}</legend>
+                              <legend class="card-title">{{ results.name }}</legend>
                               <p class="card-text">{{ about }}</p>
-                              <a href="#" class="btn btn-primary">Go There</a>
+                              <a href="{{ url_for('hostel_page', hostel_name = results.name) }}" class="btn btn-primary">Go There</a>
                           </div>
 
                           <div class="col-md-6">
@@ -20,10 +19,10 @@
                           </div>
                       </div>
                       <div class="small text-muted">
-                          Phone Number: {{ res.phone }}
+                          Phone Number: {{ results.phone }}
                       </div>
                   </div>
             </div>
-        {% endfor %}
+{#        {% endfor %}#}
     </div>
 {% endblock %}

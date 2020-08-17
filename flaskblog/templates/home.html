@@ -12,31 +12,7 @@
 </style>
 {% block content %}
     {% if results %}
-        <div class="container row">
-{#        {% for res in results %}#}
-            <div class="col-md-4">
-                  <div class="card">
-                      <img class="card-img-top" src="{{ url_for('static', filename='/images/{}/{}'.format(results.cat, results.image)) }}">
-                      <h1 class="card-title text-center">{{ results.name }}</h1>
-                      <div class="card-body row">
-                          <div class="col-md-6">
-                              <legend class="card-title">{{ results.name }}</legend>
-                              <p class="card-text">{{ about }}</p>
-                              <a href="{{ url_for('hostel_page', hostel_name = results.name) }}" class="btn btn-primary">Go There</a>
-                          </div>
 
-                          <div class="col-md-6">
-                              <legend class="card-title">Location:</legend><br>
-                              <p class="card-text">Lorem ipsum dolor sit amet, consec</p>
-                          </div>
-                      </div>
-                      <div class="small text-muted">
-                          Phone Number: {{ results.phone }}
-                      </div>
-                  </div>
-            </div>
-{#        {% endfor %}#}
-    </div>
     {% else %}
         <div class="container-fluid w-100">
     <div class="row mt-5 mr-auto ml-auto">

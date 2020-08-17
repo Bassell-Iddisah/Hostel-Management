@@ -26,6 +26,7 @@ class Hostel(db.Model):
     name = db.Column(db.String(50), unique=True, nullable=False)
     phone = db.Column(db.Integer(), nullable=False)
     cat = db.Column(db.String, nullable=False)
+    email = db.Column(db.String, nullable=False)
     image = db.Column(db.String(60), nullable=False, default='def_hostel_image.jpg')
     price_range = db.Column(db.Integer(), nullable=False)
     location = db.Column(db.String(100), nullable=False)
