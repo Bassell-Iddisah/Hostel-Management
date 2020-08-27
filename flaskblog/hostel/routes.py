@@ -4,7 +4,7 @@ import os, shutil
 from flaskblog.models import Hostel
 from flaskblog.hostel.forms import Hostel_Crud, Hostel_Update
 from flaskblog.main.forms import SearchForm
-from flaskblog.main.util import save_image
+from flaskblog.main.util import save_image, get_name
 
 
 hostel = Blueprint("hostel", __name__)
@@ -14,6 +14,8 @@ hostel = Blueprint("hostel", __name__)
 @hostel.route("/luxury", methods=['GET', 'POST'])
 def luxury():
     hostels = Hostel.query.filter_by(cat='luxury')
+    for hostel in hostels:
+        single = get_name(hostel)
     # return hostels
     return render_template('luxury.html', title='Luxury Hostels', posts=hostels, searchform=SearchForm())
 
@@ -21,12 +23,16 @@ def luxury():
 @hostel.route("/comfort", methods=['GET', 'POST'])
 def comfort():
     hostels = Hostel.query.filter_by(cat='comfort')
+    for hostel in hostels:
+        single = get_name(hostel)
     return render_template('comfort.html', title='Comfortable Hostels', posts=hostels, oiroomin=750, oiroommax=1750, searchform=SearchForm())
 
 
 @hostel.route("/affordable", methods=['GET', 'POST'])
 def affordable():
     hostels = Hostel.query.filter_by(cat='affordable')
+    for hostel in hostels:
+        single = get_name(hostel)
     # hostel_image = url_for('static', filename='/images/affordable/'+hostels.image)
     return render_template('affordable.html', title='Affordable Hostels', posts=hostels, searchform=SearchForm())
 
@@ -55,11 +61,9 @@ def hostel_crud():
 
 @hostel.route('/hostel_page/<string:hostel_name>', methods=['GET', 'POST'])
 def hostel_page(hostel_name):
-    hostel = Hostel.query.filter_by(name=hostel_name).first()
-    # Trying to test if i.Intensity is an integer
-    for i in hostel.attributes:
-        if i.Intensity is int:
-            print(i.Intensity)
+    Query = hostel_name.capitalize()
+    query_name = Query.replace(" ", "_") if " " in Query else Query
+    hostel = Hostel.query.filter_by(name=query_name).first_or_404()
     return render_template('hostel_page.html', title=f'{hostel.name} Hostel',
                            current_hostel=hostel, attribs=hostel.attributes, searchform=SearchForm())
 

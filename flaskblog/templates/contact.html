@@ -6,17 +6,19 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Hostel</th>
-                        <th>Category</th>
-                        <th>Cartaker's Number</th>
+                        <th class="text-center">Hostel</th>
+                        <th class="text-center">Category</th>
+                        <th class="text-center">Cartaker's Number</th>
+                        <th class="text-center">Hostel E-mail</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for hostel in hostels %}
                         <tr>
-                            <td>{{ hostel.name }} Hostel</td>
-                            <td>{{ hostel.cat }}</td>
-                            <td>{{ hostel.phone }}</td>
+                            <td class="text-center">{{ hostel.name }} Hostel</td>
+                            <td class="text-center">{{ hostel.cat }}</td>
+                            <td class="text-center">{{ hostel.phone }}</td>
+                            <td class="text-center">{{ hostel.email }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>

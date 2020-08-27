@@ -41,3 +41,9 @@ def search_results(query):
     results.name = results.name.replace("_", " ") if results else "No Hostel was found with that name."
 
     return render_template('search_results.html', title=f'Search results for {query}', results=results, searchform=searchform)
+
+
+def get_name(hostel):
+    hostel.name = hostel.name.replace("_", " ").capitalize() if hostel else "No hostel by that name was found, please try again with the right spelling."
+    print(hostel.name)
+    return hostel
