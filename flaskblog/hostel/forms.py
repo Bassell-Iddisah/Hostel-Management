@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileAllowed
 from flaskblog.models import Hostel
-from wtforms import StringField, SubmitField, IntegerField, FileField, PasswordField
-from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+from wtforms import StringField, SubmitField, IntegerField, FileField
+from wtforms.validators import Length, ValidationError
 
 
 class Hostel_Crud(FlaskForm):

@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, Blueprint
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
@@ -15,4 +15,10 @@ login_manager.login_message_category = 'info'
 PORT = 5000
 bcrypt = Bcrypt(app)
 
-from flaskblog import routes
+from flaskblog.main.routes import main
+from flaskblog.hostel.routes import hostel
+from flaskblog.user.routes import user
+
+app.register_blueprint(main)
+app.register_blueprint(hostel)
+app.register_blueprint(user)

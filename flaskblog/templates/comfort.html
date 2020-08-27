@@ -11,7 +11,7 @@
                           <div class="card-body">
                               <h1 class="card-title text-center">{{ post.name }} Hostel</h1>
 
-                              <a href="{{ url_for('hostel_page', hostel_name=post.name) }}" class="btn btn-outline-primary">Go There</a>
+                              <a href="{{ url_for('hostel.hostel_page', hostel_name=post.name) }}" class="btn btn-outline-primary">Go There</a>
                               <div class="small text-muted text-black-50">
                                   Caretaker's Number: {{ post.phone }}
                               </div>

@@ -18,8 +18,8 @@
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="{{ url_for('home') }}">{{ title }}</a>
-            <p class="ml-5 mr-n5 text-light">Currently logged in as: {{ current_user.username }}</p>
+            <a class="navbar-brand" href="{{ url_for('main.home') }}">{{ title }}</a>
+            <a href="{{ url_for('account') }}" class="navbar-brand"> | {{ current_user.username }}</a>
 
                 <!---------------------------------  Navbar Search  --------------------------------->
                 <form action='' class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" method="post">
@@ -39,39 +39,39 @@
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
 
-                            <a class="nav-link" href="{{ url_for('home') }}"
+                            <a class="nav-link" href="{{ url_for('main.home') }}"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-home mr-2"></i></div>
                                 Home</a>
 
-                            <a class="nav-link" href="{{ url_for('about') }}"
+                            <a class="nav-link" href="{{ url_for('main.about') }}"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-info mr-3"></i></div>
                                 About us</a>
 
-                            <a class="nav-link" href="{{ url_for('contact') }}"
+                            <a class="nav-link" href="{{ url_for('main.contact') }}"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-phone mr-2"></i></div>
                                 Contact us</a>
 
                             <div class="sb-sidenav-menu-heading">Categories</div>
-                            <a class="nav-link collapsed" href="{{ url_for('luxury') }}" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
+                            <a class="nav-link collapsed" href="{{ url_for('hostel.luxury') }}" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-columns mr-2"></i></div>
                                 Luxury
                                 <div class="sb-sidenav-collapse-arrow"></div
                             ></a>
 
-                            <a class="nav-link collapsed" href="{{ url_for('comfort') }}" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"
+                            <a class="nav-link collapsed" href="{{ url_for('hostel.comfort') }}" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-columns mr-2"></i></div>
                                 Comfort
                                 <div class="sb-sidenav-collapse-arrow"></div
                             ></a>
 
-                            <a class="nav-link collapsed" href="{{ url_for('affordable') }}" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"
+                            <a class="nav-link collapsed" href="{{ url_for('hostel.affordable') }}" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-columns mr-2"></i></div>
                                 Affordable
                                 <div class="sb-sidenav-collapse-arrow"></div
                             ></a>
 
                             <div class="sb-sidenav-menu-heading">Extra</div>
-                            <a class="nav-link collapsed" href="{{ url_for('hostel_crud') }}" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"
+                            <a class="nav-link collapsed" href="{{ url_for('hostel.hostel_crud') }}" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"
                                 ><div class="sb-nav-link-icon"><i class="fa fa-plus mr-2"></i></div>
                                 Add A Hostel
                                 <div class="sb-sidenav-collapse-arrow"></div
