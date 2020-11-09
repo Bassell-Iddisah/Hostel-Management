@@ -17,12 +17,16 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='styles/fontawesome-free/css/fontawesome-all.min.css') }}">
     </head>
     <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="{{ url_for('main.home') }}">{{ title }}</a>
-            <a href="{{ url_for('account') }}" class="navbar-brand"> | {{ current_user.username }}</a>
-
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark row">
+            <div class="col-md-4">
+                <a class="navbar-brand" href="{{ url_for('main.home') }}">{{ title }}</a>
+            </div>
+            <div class="col-md-4">
+                <a href="{{ url_for('account') }}" class=""> Logged in as: <span class="text-primary">{{ current_user.username }}</span></a>
+            </div>
+            <div class="col-md-4">
                 <!---------------------------------  Navbar Search  --------------------------------->
-                <form action='' class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" method="post">
+                <form action='' class=" d-md-inline-block form-inline" method="post">
                     {{ searchform.hidden_tag() }}
                     <div class="input-group">
                         {{ searchform.search_input(class='form-control', placeholder='Search Hostels by name...') }}
@@ -31,6 +35,7 @@
                         </div>
                     </div>
                 </form>
+            </div>
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">

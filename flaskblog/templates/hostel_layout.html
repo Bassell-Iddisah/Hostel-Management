@@ -19,9 +19,10 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 {#        Here should be breadcrums#}
-            <a class="navbar-brand text-light" href="{{ url_for('main.home') }}"><i class="fa fa-angle-double-left"></i>Go Home</a>
+            <a class="navbar-brand text-light float-left" href="{{ url_for('main.home') }}"><i class="fa fa-angle-double-left"></i>Go Home</a>
+            <h3 class="text-center text-light">{{ current_hostel.name }}</h3>
             {% block search %}
-
+<!--            Add search bar here-->
             {% endblock %}
         </nav>
         <div id="layoutSidenav">

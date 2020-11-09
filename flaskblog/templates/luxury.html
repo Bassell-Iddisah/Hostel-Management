@@ -1,11 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
     <div class="container-fluid">
+        <h2 class="text-center">Description of the category of the hostel(Why it is called the category that it is.)</h2>
         <div class="row">
             {% for post in posts %}
-                <div class="col-md-4 h-75 overflow-hidden" style="height:500px;">
+                <div class="col-md-4 h-75 shadow-sm overflow-hidden" style="height:500px;">
                     <br>
-                      <div class="card bg-secondary" style="">
+                      <div class="border-0" style="">
                           <img class="card-img-top" src="{{ url_for('static', filename='/images/luxury/'+ post.image) }}" alt="{{ post.image }}">
 
                           <div class="card-body">
